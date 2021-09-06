@@ -19,8 +19,10 @@ global class WeatherMockout implements HttpCalloutMock {
         response.setBody(RESPONSE_BODY);
         if (request.getEndpoint() == API_CALL) {
         	response.setStatusCode(200);
+            response.setStatus('SUCCESS');
         } else {
             response.setStatusCode(404);
+            response.setStatus('Not found');
         }
         
         return response;

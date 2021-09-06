@@ -32,15 +32,24 @@ public class WeatherCalloutExtension {
         request.setEndpoint('https://api.openweathermap.org/data/2.5/weather?q=' + account.BillingCity + '&appid=' + API_KEY);
         request.setMethod('GET');
         
-        response = http.send(request);
+        try {
+        	response = http.send(request);
+        } catch (CalloutException e) {
+            System.debug(e);
+        }
         
-        if (response.getStatusCode() == 200) {
+        if (response.getStatusCode() >= 200 && response.getStatusCode() < 300) {
             weatherData = (WeatherWrapper) JSON.deserialize(response.getBody(), WeatherWrapper.class);
             
             return weatherData;
+        } else if (response.getStatusCode() >= 400 && response.getStatusCode() < 600) {
+            Integer statusCode = response.getStatusCode();
+            ApexPages.Message statusMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Error ' + statusCode + ': ' + response.getStatus());
+            ApexPages.addMessage(statusMessage);
+            
+            return null;
         } else {
             return null;
         }
-        
     }
 }

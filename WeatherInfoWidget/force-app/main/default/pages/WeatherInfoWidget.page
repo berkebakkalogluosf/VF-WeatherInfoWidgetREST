@@ -1,4 +1,5 @@
 <apex:page standardController="Account" extensions="WeatherCalloutExtension">
+    <apex:pageMessages />
     <apex:pageBlock title="Weather in {!weatherData.name}">
         <apex:pageBlockSection >
             <apex:outputText value="{!weatherData.weather[0].description}" label="Description"/>
