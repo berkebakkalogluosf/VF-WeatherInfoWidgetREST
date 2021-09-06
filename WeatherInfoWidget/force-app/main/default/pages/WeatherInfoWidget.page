@@ -1,0 +1,10 @@
+<apex:page standardController="Account" extensions="WeatherCalloutExtension">
+    <apex:pageMessages />
+    <apex:pageBlock title="Weather in {!weatherData.name}">
+        <apex:pageBlockSection >
+            <apex:outputText value="{!weatherData.weather[0].description}" label="Description"/>
+            <apex:outputText value="{!weatherData.main.temp}" label="Temperature"/>
+            <apex:image url="https://openweathermap.org/img/wn/{!weatherData.weather[0].icon}.png"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,11 @@
+
+*.json
+*.js
+*.xml
+WeatherInfoWidget/scripts/soql/account.soql
+WeatherInfoWidget/scripts/apex/hello.apex
+WeatherInfoWidget/README.md
+WeatherInfoWidget/.prettierrc
+WeatherInfoWidget/.prettierignore
+WeatherInfoWidget/.forceignore
+WeatherInfoWidget/.eslintignore
